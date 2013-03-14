@@ -1,14 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    celluloid (0.12.4)
-      facter (>= 1.6.12)
-      timers (>= 1.0.0)
-    facter (1.6.17)
-    timers (1.1.0)
+    cinch (2.0.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  celluloid
+  cinch
