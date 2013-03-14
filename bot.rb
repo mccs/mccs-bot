@@ -1,13 +1,12 @@
 require 'cinch'
 
+Dir["./lib/plugins/*.rb"].each {|file| require file }
+
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "mccs.stu.marist.edu"
     c.channels = ["#chat"]
-  end
-
-  on :message, "hello" do |m|
-    m.reply "Hello, #{m.user.nick}"
+    c.plugins.plugins = [Hello, DiceRoll, Ligaf]
   end
 end
 
