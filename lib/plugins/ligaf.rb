@@ -5,6 +5,6 @@ class Ligaf
 
   match "ligaf"
   def execute(m)
-    m.reply "ligaf"
+    m.reply "http://www.troll.me/images/rainbow-spongebob/like-i-give-a-fuck.jpg"
   end
 end
