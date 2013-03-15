@@ -9,7 +9,7 @@ bot = Cinch::Bot.new do
     c.nick = "mccs-bot"
     c.realname = "MCCS Bot"
     c.plugins.prefix = /^\?/
-    c.plugins.plugins = [Hello, DiceRoll, Ligaf]
+    c.plugins.plugins = [Hello, DiceRoll, Ligaf, Plus]
   end
 end
 
