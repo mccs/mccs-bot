@@ -27,4 +27,8 @@ class RedisStorage
   def incr(key)
     @r.incr(compose_key(key))
   end
+
+  def decr(key)
+    @r.decr(compose_key(key))
+  end
 end
