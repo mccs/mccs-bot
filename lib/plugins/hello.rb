@@ -6,7 +6,7 @@ class Hello
   match "hello"
 
   def execute(m)
-    m.reply "Hello, #{m.user.nick}"
+    m.reply "Hello, #{m.user.nick}. Welcome to the MCCS IRC Channel!"
   end
 end
 
