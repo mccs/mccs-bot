@@ -2,9 +2,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     cinch (2.0.4)
+    leaderboard (3.0.2)
+      redis
+    redis (3.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   cinch
+  leaderboard
+  redis
