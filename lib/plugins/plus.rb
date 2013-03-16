@@ -30,7 +30,7 @@ class Plus
   match(/plus_leaders/, method: :get_leaders)
   def get_leaders(m)
     @plus_lb = Leaderboard.new('pluses')
-    leaders = @plus_lb.leaders(1)
+    leaders = @plus_lb.members_from_rank_range(1, 10)
     leader_string = ''
     leaders.each do |leader|
       leader_string = leader_string + leader[:rank].to_s + ". " + leader[:member] + ": " + leader[:score].to_s + ", "
