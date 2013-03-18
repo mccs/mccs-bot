@@ -12,7 +12,7 @@ class Plus
     if (target == m.user.nick)
       @plus_lb.change_score_for(target, -1)
       total = @plus_lb.score_for(target).to_i
-      m.reply("No cheating #{m.user.nick}! -1 Plus!")
+      m.reply("No cheating #{m.user.nick}! -1 Plus! #{m.user.nick} now has " + total.to_s + " pluses!")
     else
       @plus_lb.change_score_for(target, 1)
       total = @plus_lb.score_for(target).to_i
@@ -24,7 +24,7 @@ class Plus
   def get_plus(m, target)
     @plus_lb = Leaderboard.new('pluses')
     total = @plus_lb.score_for(target).to_i
-    m.reply("You have " + total.to_s + " plusses")
+    m.reply("#{m.user.nick} has " + total.to_s + " pluses")
   end
 
   match(/plus_leaders/, method: :get_leaders)
