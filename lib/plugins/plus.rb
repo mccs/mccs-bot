@@ -16,7 +16,7 @@ class Plus
     else
       @plus_lb.change_score_for(target, 1)
       total = @plus_lb.score_for(target).to_i
-      if(total == 1 || total == -1)
+      if total == 1 || total == -1
         m.reply(target.to_s + " got a plus! " + target.to_s + " now has " + total.to_s + " plus!")
       else
         m.reply(target.to_s + " got a plus! " + target.to_s + " now has " + total.to_s + " plusses!")
@@ -28,7 +28,7 @@ class Plus
   def get_plus(m, target)
     @plus_lb = Leaderboard.new('pluses')
     total = @plus_lb.score_for(target).to_i
-    if(total == 1 || total == -1)
+    if total == 1 || total == -1
       m.reply("You have " + total.to_s + " plus")
     else
       m.reply("You have " + total.to_s + " plusses")
