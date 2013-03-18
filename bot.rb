@@ -1,7 +1,10 @@
 require 'cinch'
 require 'yaml'
 
-Dir["./lib/plugins/*.rb"].each {|file| require file }
+Dir["./lib/plugins/*.rb"].each {|file|
+  puts 'loaded ' + file
+  require file
+}
 
 config = YAML.load_file('config.yml')
 
