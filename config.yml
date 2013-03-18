@@ -2,5 +2,5 @@ server: mccs.stu.marist.edu
 channels: ["#chat"]
 nick: mccs-bot
 realname: MCCS Bot
-prefix: /^\?/
+prefix: ^\?
 plugins: [Hello, DiceRoll, Ligaf, Plus]
