@@ -4,32 +4,47 @@ require './lib/redis_storage'
 
 class Plus
   include Cinch::Plugin
+  @@PLUS_LEADERBOARD = 'pluses'
 
+  def give_plus(target)
+    @plus_lb = Leaderboard.new(@@PLUS_LEADERBOARD)
+    @plus_lb.change_score_for(target, 1)
+  end
+
+  def take_plus(target)
+    @plus_lb = Leaderboard.new(@@PLUS_LEADERBOARD)
+    @plus_lb.change_score_for(target, -1)
+  end
+
+  def get_total(target)
+    total = @plus_lb.score_for(target).to_i
+    if total == 1 || total == -1
+      return "#{target} now has " + total.to_s + " plus!"
+    else
+      return "#{target} now has " + total.to_s + " pluses!"
+    end
+  end
 
   match(/\+\+ (.+)/, method: :plus)
   def plus(m, target)
     @plus_lb = Leaderboard.new('pluses')
     if (target == m.user.nick)
-      @plus_lb.change_score_for(target, -1)
-      total = @plus_lb.score_for(target).to_i
-      m.reply("No cheating #{m.user.nick}! -1 Plus! #{m.user.nick} now has " + total.to_s + " pluses!")
+      take_plus target
+      m.reply "No cheating #{m.user.nick}! -1 Plus! #{get_total(target)}"
     else
-      @plus_lb.change_score_for(target, 1)
-      total = @plus_lb.score_for(target).to_i
-      m.reply(target.to_s + " got a plus! " + target.to_s + " now has " + total.to_s + " pluses!")
+      give_plus target
+      m.reply "#{target} got a plus! #{get_total(target)}"
     end
   end
 
   match(/pluses (.+)/, method: :get_plus)
   def get_plus(m, target)
-    @plus_lb = Leaderboard.new('pluses')
-    total = @plus_lb.score_for(target).to_i
-    m.reply("#{m.user.nick} has " + total.to_s + " pluses")
+    m.reply "#{get_total(target)}"
   end
 
   match(/plus_leaders/, method: :get_leaders)
   def get_leaders(m)
-    @plus_lb = Leaderboard.new('pluses')
+    @plus_lb = Leaderboard.new(@@PLUS_LEADERBOARD)
     leaders = @plus_lb.members_from_rank_range(1, 10)
     leader_string = ''
     leaders.each do |leader|
@@ -37,4 +52,5 @@ class Plus
     end
     m.reply(leader_string)
   end
+
 end
