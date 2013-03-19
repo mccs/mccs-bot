@@ -1,6 +1,6 @@
 server: mccs.stu.marist.edu
-channels: ["#chat"]
-nick: mccs-bot
+channels: ["#testing"]
+nick: colby-bot
 realname: MCCS Bot
-prefix: ^\?
-plugins: [Hello, DiceRoll, Ligaf, Plus]
+prefix: ^@
+plugins: [Hello, DiceRoll, Ligaf, Plus, Learn]
