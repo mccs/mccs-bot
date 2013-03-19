@@ -26,8 +26,6 @@ class Learn
     vals = @@store[cmd]
     if vals
       m.reply(JSON.parse(vals).sample)
-    else
-      m.reply("unknown command '#{cmd}'")
     end
   end
 
