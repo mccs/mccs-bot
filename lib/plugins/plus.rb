@@ -1,4 +1,5 @@
 require 'cinch'
+require 'json'
 require 'leaderboard'
 require './lib/redis_storage'
 
@@ -25,21 +26,39 @@ class Plus
     end
   end
 
+  def add_reason(target, reason)
+    @plus_lb = Leaderboard.new(@@PLUS_LEADERBOARD)
+    reasons = JSON.parse(@plus_lb.member_data_for(target))["reasons"]
+    if reasons
+      @plus_lb.update_member_data(target, JSON.generate({"reasons"=>reasons << reason})) unless reasons.include?(reason)
+    else
+      @plus_lb.update_member_data(target, JSON.generate({"reasons"=>[reason]}))
+    end
+  end
+
   match(/\+\+ (.+)/, method: :plus)
   def plus(m, target)
     @plus_lb = Leaderboard.new('pluses')
-    if (target == m.user.nick)
-      take_plus target
-      m.reply "No cheating #{m.user.nick}! -1 Plus! #{get_total(target)}"
+    user, reason = target.split(/\s+for\s+/, 2)
+    if (user == m.user.nick)
+      take_plus user
+      m.reply "No cheating #{m.user.nick}! -1 Plus! #{get_total(user)}"
     else
-      give_plus target
-      m.reply "#{target} got a plus! #{get_total(target)}"
+      give_plus user
+      add_reason(user, reason) unless reason.nil?
+      m.reply "#{user} got a plus for #{reason}! #{get_total(user)}"
     end
   end
 
   match(/pluses (.+)/, method: :get_plus)
   def get_plus(m, target)
-    m.reply "#{get_total(target)}"
+    @plus_lb = Leaderboard.new('pluses')
+    reasons = JSON.parse(@plus_lb.member_data_for(target))["reasons"]
+    if reasons.nil? || reasons.empty?
+      m.reply "#{get_total(target)}"
+    else
+      m.reply "#{get_total(target)} They were given for #{reasons.join(', ')}"
+    end
   end
 
   match(/plus_leaders/, method: :get_leaders)
