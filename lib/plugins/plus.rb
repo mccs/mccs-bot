@@ -36,7 +36,6 @@ class Plus
 
   def add_reason(target, reason)
     @plus_lb = Leaderboard.new(@@PLUS_LEADERBOARD)
-    #reasons = JSON.parse(@plus_lb.member_data_for(target))["reasons"]
     reasons = get_reasons(target)
     if reasons
       @plus_lb.update_member_data(target, JSON.generate({"reasons"=>reasons << reason})) unless reasons.include?(reason)
@@ -62,7 +61,6 @@ class Plus
   match(/pluses (.+)/, method: :get_plus)
   def get_plus(m, target)
     @plus_lb = Leaderboard.new('pluses')
-    #reasons = JSON.parse(@plus_lb.member_data_for(target))["reasons"]
     reasons = get_reasons(target)
     if reasons.nil? || reasons.empty?
       m.reply "#{get_total(target)}"
