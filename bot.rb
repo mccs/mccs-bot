@@ -1,5 +1,6 @@
 require 'cinch'
 require 'yaml'
+require 'sys/proctable'
 
 Dir["./lib/plugins/*.rb"].each {|file|
   puts 'loaded ' + file

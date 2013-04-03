@@ -1,6 +1,6 @@
 server: mccs.stu.marist.edu
-channels: ["#chat"]
+channels: ["#bottest"]
 nick: mccs-bot
 realname: MCCS Bot
 prefix: ^\?
-plugins: [Hello, DiceRoll, Ligaf, Plus, Spoonerize, Learn]
+plugins: [Hello, DiceRoll, Ligaf, Plus, Spoonerize, Learn, Deploy]
