@@ -13,7 +13,7 @@ class Summon
   match(/resummon (.+)/, method: :resummon)
   def resummon(m, query)
     image_results = Google::Search::Image.new(:query => query)
-    image_results.shift
+    image_results.to_a.shift
     m.reply(image_results.sample.uri.to_s)
   end
 end
