@@ -77,15 +77,12 @@ class Plus
     end
   end
 
-  match(/plus_leaders/, method: :get_leaders)
+  match(/leaders/, method: :get_leaders)
   def get_leaders(m)
     @plus_lb = Leaderboard.new(@@PLUS_LEADERBOARD)
-    leaders = @plus_lb.members_from_rank_range(1, 10)
-    leader_string = ''
-    leaders.each do |leader|
-      leader_string = leader_string + leader[:rank].to_s + ". " + leader[:member] + ": " + leader[:score].to_i.to_s + ", "
-    end
-    m.reply(leader_string)
+    m.reply @plus_lb.members_from_rank_range(1, 10).inject('') {|l|
+      "#{l[:score].to_i.to_s} - #{l[:member]}, "
+    }
   end
 
 end
