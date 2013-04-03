@@ -1,6 +1,6 @@
 class Word
 
-  @@pattern = /[aeiou]+/
+  @@pattern = /[aeiou]+/i
 
   def head
     split > 0 ? @word[0..(split - 1)] : ''
