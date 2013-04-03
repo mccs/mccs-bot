@@ -26,6 +26,14 @@ class Plus
     end
   end
 
+  def reasons_string(reasons)
+    if reasons.length > 1
+      "They have been given for: #{reasons[0..-2].join(', ')} and #{reasons[-1]}"
+    else
+      "They have been given for: #{reasons[0]}"
+    end
+  end
+  
   def get_reasons(target)
     @plus_lb = Leaderboard.new(@@PLUS_LEADERBOARD)
     member_data = @plus_lb.member_data_for(target)
@@ -65,7 +73,7 @@ class Plus
     if reasons.nil? || reasons.empty?
       m.reply "#{get_total(target)}"
     else
-      m.reply "#{get_total(target)} They were given for #{reasons.join(', ')}"
+      m.reply "#{get_total(target)} #{reasons_string(reasons)}"
     end
   end
 
