@@ -5,3 +5,5 @@ gem 'redis'
 gem 'leaderboard'
 gem 'god'
 gem 'json'
+gem 'google-search'
+
