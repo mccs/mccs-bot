@@ -6,7 +6,14 @@ Dir["./lib/plugins/*.rb"].each {|file|
   require file
 }
 
-config = YAML.load_file('config.yml')
+begin
+  puts 'checking for dev.config.yml...'
+  config = YAML.load_file('dev.config.yml')
+  puts 'loaded dev.config.yml!'
+rescue
+  config = YAML.load_file('config.yml')
+  puts 'no dev.config.yml... loaded config.yml!'
+end
 
 bot = Cinch::Bot.new do
   configure do |c|
