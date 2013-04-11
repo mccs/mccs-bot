@@ -1,2 +1,2 @@
-mccs-bot
+[[mccs-bot]]
 ========
