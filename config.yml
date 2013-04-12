@@ -1,5 +1,5 @@
 server: mccs.stu.marist.edu
-channels: ["#chat"]
+channels: ["#chat", "#mber"]
 nick: mccs-bot
 realname: MCCS Bot
 prefix: ^\?
