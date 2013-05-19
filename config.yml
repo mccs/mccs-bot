@@ -3,4 +3,4 @@ channels: ["#chat", "#mber"]
 nick: mccs-bot
 realname: MCCS Bot
 prefix: ^\?
-plugins: [Hello, DiceRoll, Ligaf, Plus, Spoonerize, Learn, Summon, Join, Slap]
+plugins: [Hello, DiceRoll, Ligaf, Plus, Spoonerize, Learn, Summon, Join, Slap, Nope]
