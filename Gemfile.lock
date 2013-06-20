@@ -3,8 +3,6 @@ GEM
   specs:
     cinch (2.0.4)
     god (0.13.2)
-    google-search (1.0.3)
-      json
     json (1.5.5)
     leaderboard (3.0.2)
       redis
@@ -16,7 +14,6 @@ PLATFORMS
 DEPENDENCIES
   cinch
   god
-  google-search
   json
   leaderboard
   redis
