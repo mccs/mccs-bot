@@ -4,7 +4,7 @@ require 'google-search'
 class Wat
     include Cinch::Plugin
 
-    match('wat')
+    match(/wat/)
     def execute(m)
         image_results = Google::Search::Image.new(:query => 'wat')
         image_results = image_results.to_a
