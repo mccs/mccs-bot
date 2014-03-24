@@ -28,7 +28,7 @@ class Plus
 
   def reasons_string(reasons)
     if reasons.length > 1
-      "They have been given for: #{reasons[0..-2].join(', ')} and #{reasons[-1]}"
+      "They have been given for: #{reasons[0..-2].join(', ')}, and #{reasons[-1]}"
     else
       "They have been given for: #{reasons[0]}"
     end
