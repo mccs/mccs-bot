@@ -6,7 +6,7 @@ class Wat
 
     match(/wat/)
     def execute(m)
-        image_results = Google::Search::Image.new(:query => 'wat')
+        image_results = Google::Search::Image.new(:query => 'wat meme')
         image_results = image_results.to_a
         image_results.shift
         m.reply(image_results.sample.uri.to_s)
