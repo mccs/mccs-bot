@@ -20,9 +20,9 @@ class Plus
   def get_total(target)
     total = @plus_lb.score_for(target).to_i
     if total == 1 || total == -1
-      return "#{target} now has " + total.to_s + " plus!"
+      return "#{target} has " + total.to_s + " plus!"
     else
-      return "#{target} now has " + total.to_s + " pluses!"
+      return "#{target} has " + total.to_s + " pluses!"
     end
   end
 
